@@ -1,4 +1,6 @@
 const gulp = require('gulp');
+const webpackStream = require("webpack-stream");
+const webpack = require("webpack");
 
 const $ = require('../plugins');
 const DOMAIN = require('../conf').DOMAIN;
@@ -8,7 +10,12 @@ const conf = require('../conf').pug;
 gulp.task('pug', () => {
   const data = require(`../../${conf.json}`);
   data.meta.domain = DOMAIN;
-  data.meta.path = DIR.PATH;
+  conf.mode = process.env.NODE_ENV;
+  if (conf.mode == 'development') {
+    data.meta.path = DIR.PATH;
+  } else {
+    data.meta.path = `/${DIR.GITHUBDIR}${DIR.PATH}`;
+  }
   return gulp.src(conf.src)
     .pipe($.plumber({
       errorHandler: $.notify.onError('<%= error.message %>')

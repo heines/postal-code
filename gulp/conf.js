@@ -1,13 +1,13 @@
 // 設定ファイル
 // 対象パスやオプションを指定
-
-const DOMAIN = module.exports.DOMAIN = 'http://heiness.net/';
+const DOMAIN = module.exports.DOMAIN = 'https://heines.github.io';
 const DIR = module.exports.DIR =  {
    // 語尾にスラッシュはつけない
   PATH: '',
   SRC: 'src',
   DEST: 'dst',
-  BUILD: 'docs'
+  BUILD: 'docs',
+  GITHUBDIR: 'postal-code'
 };
 
 module.exports.serve = {
@@ -31,7 +31,7 @@ module.exports.serve = {
       baseDir: DIR.BUILD,
       index: 'index.html',
       routes: {
-        [DIR.PATH]: `${DIR.BUILD}${DIR.PATH}/`
+        [DIR.PATH]: `${DIR.BUILD}${DIR.PATH}/${DIR.GITHUBDIR}/`
       }
     }
   }
