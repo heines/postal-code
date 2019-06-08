@@ -4,7 +4,7 @@
 
 | folder name | purpose |
 | --- | --- |
-| build | `npm run build` を実行すると書き出される。<br>主に納品・公開用のファイルとして扱う。 |
+| docs | `npm run build` を実行すると書き出される。<br>github.pages公開用のファイルとして扱う。 |
 | dst | `npm start` を実行すると書き出される。<br>開発時にローカルサーバーから参照するファイル。 |
 | src | 開発に使用するファイル。 |
 
