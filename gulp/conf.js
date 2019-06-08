@@ -7,7 +7,7 @@ const DIR = module.exports.DIR =  {
   PATH: '',
   SRC: 'src',
   DEST: 'dst',
-  BUILD: 'doc'
+  BUILD: 'docs'
 };
 
 module.exports.serve = {
