@@ -47,12 +47,16 @@
     "require-dir": "^1.2.0",
     "slash": "^3.0.0",
     "vinyl-source-stream": "^2.0.0",
+    "vue-loader": "^15.7.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
     "webpack": "^4.30.0",
     "webpack-stream": "^5.2.1",
     "yargs": "^13.2.2"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.3",
+    "axios": "^0.19.0",
     "easing-js": "git://github.com/danro/easing-js.git",
     "js-util": "git://github.com/ykob/js-util.git",
     "jstransformer-markdown-it": "^2.1.0",

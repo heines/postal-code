@@ -37,6 +37,7 @@ module.exports.serve = {
   }
 };
 
+const { VueLoaderPlugin } = require('vue-loader');
 module.exports.scripts = {
   src: [
     `./${DIR.SRC}/**/*.js`,
@@ -55,6 +56,10 @@ module.exports.scripts = {
     module: {
       rules: [
         {
+          test: /\.vue$/,
+          loader: 'vue-loader'
+        },
+        {
           test: /\.js$/,
           exclude: /node_modules/,
           use: {
@@ -65,7 +70,15 @@ module.exports.scripts = {
           },
         }
       ]
-    }
+    },
+    resolve: {
+      alias: {
+        vue: 'vue/dist/vue.common.js'
+      }
+    },
+    plugins: [
+      new VueLoaderPlugin()
+    ],
   },
 };
 
