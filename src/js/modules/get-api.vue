@@ -1,5 +1,6 @@
 <template lang="html">
-  <div>{{ code }}</div>
+  <div>{{ info }}
+  </div>
 </template>
 
 <script>
@@ -8,17 +9,19 @@ export default {
   name: 'GetApi',
   data: function() {
     return {
-      code: ''
+      info: null,
     };
   },
   mounted: async function() {
-    await axios.get('http://zipcloud.ibsnet.co.jp/api/search?zipcode=105-0011')
+    let tmp;
+    await axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
     .then(function(response) {
-      this.code = response.results.address1;
+      tmp = response.data;
     })
     .catch(function (error) {
       console.log(error);
     })
+    this.info = tmp;
   }
 }
 </script>
