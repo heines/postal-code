@@ -1,16 +1,21 @@
-<template lang="html">
-  <div>{{ info }}
-  </div>
+<template lang="pug">
+  div
+    |{{ info }}
+    base-button
 </template>
 
 <script>
 import axios from 'axios';
+import BaseButton from './components/BaseButton.vue';
 export default {
   name: 'GetApi',
   data: function() {
     return {
       info: null,
     };
+  },
+  components: {
+    BaseButton
   },
   mounted: async function() {
     let tmp;
