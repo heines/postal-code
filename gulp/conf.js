@@ -60,8 +60,25 @@ module.exports.scripts = {
           loader: 'pug-plain-loader'
         },
         {
+          test: /\.scss$/,
+          use: [
+            'vue-style-loader',
+            'css-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+              }
+            }
+          ]
+        },
+        {
           test: /\.vue$/,
-          loader: 'vue-loader'
+          loader: 'vue-loader',
+          options: {
+            loaders: {
+              scss: 'vue-style-loader!css-loader!sass-loader'
+            }
+          }
         },
         {
           test: /\.js$/,
