@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     |{{ info }}
-    base-button
+    base-button(href='/')
 </template>
 
 <script>

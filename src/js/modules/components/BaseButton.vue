@@ -1,29 +1,31 @@
 <template lang="pug">
-  a(href="#")
-    |UPDATE（まだaタグ）
+div
+  a.blue(:href='href')
+    |UPDATE
 </template>
 
 <script>
 export default {
   name: 'BaseButton',
-  data () {
-    return {
-
-    };
-  },
+  props: {
+    href : String
+  }
 }
 </script>
 
 <style lang="scss">
   a {
-    width: 200px;
     height: 50px;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    background-color: #00CCFF;
-    color: #ffffff;
+    padding-left: 30px;
+    padding-right: 30px;
     text-decoration: none;
     border-radius: 25px;
+    &.blue {
+      background-color: #00CCFF;
+      color: #ffffff;
+    }
   }
 </style>
