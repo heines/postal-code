@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    |{{ info }}
+    |{{ info[0]["address1"] + info[0]["address2"] + info[0]["address3"] }}
     base-button(href='/')
 </template>
 
@@ -19,9 +19,9 @@ export default {
   },
   mounted: async function() {
     let tmp;
-    await axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+    await axios.get('http://heiness.net/api/')
     .then(function(response) {
-      tmp = response.data;
+      tmp = response.data.results;
     })
     .catch(function (error) {
       console.log(error);
