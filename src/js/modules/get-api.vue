@@ -1,7 +1,11 @@
 <template lang="pug">
-  div
+  div(v-if="info")
+    input(:value="code1" @change="code1 = $event.target.value")
+    input(:value="code2" @change="code2 = $event.target.value")
     |{{ info[0]["address1"] + info[0]["address2"] + info[0]["address3"] }}
-    base-button(href='/')
+    base-button(
+      :setPostalCode="setPostalCode"
+      )
 </template>
 
 <script>
@@ -12,10 +16,12 @@ export default {
   data: function() {
     return {
       info: null,
+      code1: '',
+      code2: '',
     };
   },
   components: {
-    BaseButton
+    BaseButton,
   },
   mounted: async function() {
     let tmp;
@@ -27,7 +33,15 @@ export default {
       console.log(error);
     })
     this.info = tmp;
+  },
+  methods: {
+    setPostalCode: function() {
+      let postalCode =
+      axios.get('http://heiness.net/api/', {
+      })
+    }
   }
+
 }
 </script>
 
