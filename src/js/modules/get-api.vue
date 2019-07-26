@@ -34,11 +34,10 @@ export default {
   },
   mounted: async function() {
     let tmp;
-    await axios.get('http://heiness.net/api/')
+    await axios.get('https://heiness.net/api/')
     .then(response => {
       tmp = response.data.results;
       this.address = tmp[0]["address1"] + tmp[0]["address2"] + tmp[0]["address3"];
-      console.log(response);
     })
     .catch(error => {
       this.address = '';
