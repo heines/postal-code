@@ -50,7 +50,7 @@ export default {
     setPostalCode: function() {
       let tmp;
       let postalCode =
-      axios.get('http://heiness.net/api/', {
+      axios.get('https://heiness.net/api/', {
         params: {
           code: this.code1 + this.code2
         }
