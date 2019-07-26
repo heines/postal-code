@@ -2,9 +2,9 @@
   div.u-d-fc
     div
       p 郵便番号
-      input(:value="code1" @change="code1 = $event.target.value" maxlength="3")
+      input(:value="code1" @change="code1 = $event.target.value" maxlength="3" placeholder="105")
       span -
-      input(:value="code2" @change="code2 = $event.target.value" maxlength="4")
+      input(:value="code2" @change="code2 = $event.target.value" maxlength="4" placeholder="0011")
       div
         p
           |{{ address }} {{ errorText }}
