@@ -1,20 +1,23 @@
 <template lang="pug">
-  div
-    p 郵便番号
-    input(:value="code1" @change="code1 = $event.target.value" maxlength="3")
-    span -
-    input(:value="code2" @change="code2 = $event.target.value" maxlength="4")
+  div.u-d-fc
     div
-      p
-        |{{ address }} {{ errorText }}
-    base-button(
-      :setPostalCode="setPostalCode"
-      )
+      p 郵便番号
+      input(:value="code1" @change="code1 = $event.target.value" maxlength="3")
+      span -
+      input(:value="code2" @change="code2 = $event.target.value" maxlength="4")
+      div
+        p
+          |{{ address }} {{ errorText }}
+      base-button(
+        :setPostalCode="setPostalCode"
+        )
+    ImageShobon
 </template>
 
 <script>
 import axios from 'axios';
 import BaseButton from './components/BaseButton.vue';
+import ImageShobon from './components/ImageShobon.vue';
 export default {
   name: 'GetApi',
   data: function() {
@@ -27,6 +30,7 @@ export default {
   },
   components: {
     BaseButton,
+    ImageShobon
   },
   mounted: async function() {
     let tmp;

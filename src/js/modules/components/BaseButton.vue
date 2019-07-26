@@ -16,6 +16,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../../../css/foundation/_variables';
   .baseButton {
     &__inner {
       height: 50px;
@@ -32,7 +33,7 @@ export default {
         opacity: 0.5;
       }
       &.blue {
-        background-color: #00CCFF;
+        background-color: $color-key;
         color: #ffffff;
       }
     }
