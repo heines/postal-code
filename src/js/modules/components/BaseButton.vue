@@ -1,23 +1,24 @@
 <template lang="pug">
-.baseButton
-  .baseButton__inner.blue(
-    @click="setPostalCode"
-    )
-    |UPDATE
+  .p-base-button
+    .p-base-button__inner.blue(
+      @click="setPostalCode"
+      v-html="text"
+      )
 </template>
 
 <script>
 export default {
   name: 'BaseButton',
   props: [
-    'setPostalCode'
+    'setPostalCode',
+    'text',
   ]
 }
 </script>
 
 <style lang="scss" scoped>
   @import '../../../css/foundation/_variables';
-  .baseButton {
+  .p-base-button {
     &__inner {
       height: 50px;
       display: inline-flex;

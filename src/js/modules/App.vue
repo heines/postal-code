@@ -1,6 +1,7 @@
 <template lang="pug">
-  div.u-d-fc
+  div.p-app
     div
+      h1 郵便番号API
       p 郵便番号
       input(:value="code1" @change="code1 = $event.target.value" maxlength="3" placeholder="105")
       span -
@@ -10,6 +11,7 @@
           |{{ address }} {{ errorText }}
       base-button(
         :setPostalCode="setPostalCode"
+        text="UPDATE"
         )
     ImageShobon
 </template>
@@ -19,7 +21,7 @@ import axios from 'axios';
 import BaseButton from './components/BaseButton.vue';
 import ImageShobon from './components/ImageShobon.vue';
 export default {
-  name: 'GetApi',
+  name: 'App',
   data: function() {
     return {
       code1: '',
@@ -69,4 +71,27 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '../../css/foundation/_variables';
+  @import '../../css/foundation/_mixin-utils';
+  .p-app {
+    position: relative;
+    height: 100vh;
+    padding-right: 5vw;
+    padding-left: 5vw;
+    box-sizing: border-box;
+    @include l-more-than-mobile {
+      display: flex;
+      justify-content: center;
+      min-width: 0;
+    }
+    @include l-mobile {
+      flex-direction: column;
+    }
+    h1 {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top : 0.76em;
+      padding-bottom : 0.76em;
+    }
+  }
 </style>

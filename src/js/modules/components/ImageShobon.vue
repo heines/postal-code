@@ -10,7 +10,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../../../css/foundation/_variables';
+  @import '../../../css/foundation/_mixin-utils';
   svg {
-    width: 50%;
+    @include l-more-than-mobile {
+      flex: 1;
+      max-width: 60%;
+    }
+    @include l-mobile {
+      position: absolute;
+      bottom: 10%;
+      width: 90vw;
+    }
   }
 </style>
