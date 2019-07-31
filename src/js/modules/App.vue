@@ -1,26 +1,31 @@
 <template lang="pug">
   .p-app
     .p-app__countents
-      .p-app__page1(:class="{'next1' : isNext1}")
+      .p-app__page1#top
         h1 郵便番号API
         p 郵便番号を入力してください
         input(:value="code1" @change="code1 = $event.target.value" maxlength="3" placeholder="105")
         span -
         input(:value="code2" @change="code2 = $event.target.value" maxlength="4" placeholder="0011")
         base-button(
+          href="#answer"
           :setPostalCode="setPostalCode"
-          :goToNext1="goToNext1"
+          :goToNext="goToNext"
           :fallMascot="fallMascot"
           text="UPDATE"
-          )
+          ).js-anchor-link
         p 使用API：
           a(href="http://zipcloud.ibsnet.co.jp/") 郵便番号データ配信サービス
-      .p-app__page2(:class="{'next1' : isNext1}")
+      .p-app__page2#answer(:class="{ 'next' : isNext }")
         p.p-app__comment
           |{{ address }} {{ errorText }}
+        a(
+          href="#top"
+          @click="goToTop"
+          ) 戻る
     ImageShobon(
       ref="shobon"
-      :isAnimate="isNext1"
+      :isAnimate="isNext"
     )
 </template>
 
@@ -28,6 +33,7 @@
 import axios from 'axios';
 import BaseButton from './components/BaseButton.vue';
 import ImageShobon from './components/ImageShobon.vue';
+const scrollAnchorLink = require('./common/scrollAnchorLink.js').default;
 export default {
   name: 'App',
   data: function() {
@@ -36,7 +42,7 @@ export default {
       code2: '',
       address: '',
       errorText: '',
-      isNext1: false,
+      isNext: false,
     };
   },
   components: {
@@ -45,16 +51,7 @@ export default {
   },
   mounted: async function() {
     let tmp;
-    await axios.get('https://heiness.net/api/')
-    .then(response => {
-      tmp = response.data.results;
-      this.address = tmp[0]["address1"] + tmp[0]["address2"] + tmp[0]["address3"];
-    })
-    .catch(error => {
-      this.address = '';
-      this.errorText = 'その郵便番号ないっス';
-    })
-
+    new scrollAnchorLink();
   },
   methods: {
     setPostalCode: function() {
@@ -75,11 +72,14 @@ export default {
         this.errorText = 'その郵便番号ないっス';
       })
     },
-    goToNext1: function() {
-      this.isNext1 = true;
+    goToNext: function() {
+      this.isNext = true;
     },
     fallMascot: function() {
       this.$refs.shobon.animateHand();
+    },
+    goToTop: function() {
+      this.isNext = false;
     }
   },
 }
@@ -101,7 +101,9 @@ export default {
       padding-bottom : 0.76em;
     }
     a {
+      display: block;
       color: $color-link;
+      text-decoration: none;
     }
     &__page1, &__page2 {
       position: relative;
@@ -140,12 +142,10 @@ export default {
       }
     }
     // interaction
-    &__page1, &__page2 {
-      transition-duration: 1.5s;
-      transition-property: transform;
-      transition-timing-function:cubic-bezier(.36, .75, .28, .97);
-      &.next1 {
-        transform: translateY(-100%);
+    &__page2 {
+      opacity: 0;
+      &.next {
+        opacity: 1;
       }
     }
   }

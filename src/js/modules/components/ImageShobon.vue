@@ -102,6 +102,7 @@ export default {
   @import '../../../css/foundation/_mixin-utils';
   svg {
     position: fixed;
+    z-index: 1000;
     @include l-more-than-mobile {
       right: 0;
       bottom: 15%;
@@ -115,7 +116,7 @@ export default {
     &.fall {
       animation-name: floatMascot;
       animation-fill-mode: both;
-      animation-duration: 1.5s;
+      animation-duration: 1.2s;
       animation-timing-function: cubic-bezier(.36, .75, .28, .97);
     }
   }

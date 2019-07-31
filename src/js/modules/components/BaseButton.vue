@@ -1,7 +1,7 @@
 <template lang="pug">
   a.p-base-button
     .p-base-button__inner.blue(
-      @click="setPostalCode();goToNext1();fallMascot();"
+      @click="setPostalCode();goToNext();fallMascot();"
       v-html="text"
       )
 </template>
@@ -12,7 +12,7 @@ export default {
   props: [
     'setPostalCode',
     'text',
-    'goToNext1',
+    'goToNext',
     'fallMascot',
   ]
 }
@@ -24,7 +24,7 @@ export default {
     display: block;
     margin-top: 15px;
     margin-bottom: 15px;
-    outline: none;
+    text-decoration: none;
     &__inner {
       height: 50px;
       display: inline-flex;
