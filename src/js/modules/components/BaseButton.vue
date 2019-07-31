@@ -1,5 +1,5 @@
 <template lang="pug">
-  button.p-base-button
+  a.p-base-button
     .p-base-button__inner.blue(
       @click="setPostalCode();goToNext1();fallMascot();"
       v-html="text"

@@ -101,7 +101,7 @@ export default {
   @import '../../../css/foundation/_variables';
   @import '../../../css/foundation/_mixin-utils';
   svg {
-    position: absolute;
+    position: fixed;
     @include l-more-than-mobile {
       right: 0;
       bottom: 15%;
@@ -115,8 +115,8 @@ export default {
     &.fall {
       animation-name: floatMascot;
       animation-fill-mode: both;
-      animation-duration: 1.2s;
-      animation-timing-function: ease;
+      animation-duration: 1.5s;
+      animation-timing-function: cubic-bezier(.36, .75, .28, .97);
     }
   }
   @keyframes floatMascot {

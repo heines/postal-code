@@ -91,7 +91,6 @@ export default {
   @import url('https://fonts.googleapis.com/css?family=Kosugi+Maru&display=swap');
   .p-app {
     position: relative;
-    height: 100vh;
     padding-right: 5vw;
     padding-left: 5vw;
     box-sizing: border-box;
