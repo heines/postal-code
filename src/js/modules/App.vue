@@ -17,7 +17,7 @@
         p 使用API：
           a(href="http://zipcloud.ibsnet.co.jp/") 郵便番号データ配信サービス
       .p-app__page2#answer(:class="{ 'next' : isNext }")
-        p.p-app__comment
+        p.p-app__comment(v-show="address || errorText")
           |{{ address }} {{ errorText }}
         a(
           href="#top"
@@ -144,8 +144,21 @@ export default {
     // interaction
     &__page2 {
       opacity: 0;
+      transition-property: opacity;
+      transition-duration: 2s;
+      &::before, &::after {
+        opacity: 0;
+        transition-property: opacity;
+        transition-duration: 2s;
+      }
       &.next {
         opacity: 1;
+      }
+      &.next & {
+        opacity: 1;
+        &::before, &::after {
+          opacity: 1;
+        }
       }
     }
   }
