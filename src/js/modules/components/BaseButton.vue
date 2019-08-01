@@ -1,7 +1,7 @@
 <template lang="pug">
   a.p-base-button
     .p-base-button__inner.blue(
-      @click="setPostalCode();goToNext();fallMascot();"
+      @click="setPostalCode();goToNext()"
       v-html="text"
       )
 </template>
@@ -13,7 +13,6 @@ export default {
     'setPostalCode',
     'text',
     'goToNext',
-    'fallMascot',
   ]
 }
 </script>

@@ -11,7 +11,6 @@
           href="#answer"
           :setPostalCode="setPostalCode"
           :goToNext="goToNext"
-          :fallMascot="fallMascot"
           text="UPDATE"
           ).js-anchor-link
         p 使用API：
@@ -74,9 +73,6 @@ export default {
     },
     goToNext: function() {
       this.isNext = true;
-    },
-    fallMascot: function() {
-      this.$refs.shobon.animateHand();
     },
     goToTop: function() {
       this.isNext = false;

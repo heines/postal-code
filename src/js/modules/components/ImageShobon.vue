@@ -93,6 +93,13 @@ export default {
     animateHand: function() {
       this.hand.beginElement();
     }
+  },
+  watch: {
+    isAnimate: function() {
+      if(this.isAnimate) {
+        this.hand.beginElement();
+      }
+    }
   }
 }
 </script>
@@ -117,14 +124,14 @@ export default {
       animation-name: floatMascot;
       animation-fill-mode: both;
       animation-duration: 1.2s;
-      animation-timing-function: cubic-bezier(.36, .75, .28, .97);
+      animation-timing-function: cubic-bezier(.54,-0.16,.41,1.03);
     }
   }
   @keyframes floatMascot {
     0% {
       bottom: 15%;
     }
-    50% {
+    30% {
       bottom: 25%;
     }
     100% {
