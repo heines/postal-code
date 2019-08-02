@@ -105,8 +105,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../../css/foundation/_variables';
-  @import '../../../css/foundation/_mixin-utils';
+  @import '../../../../css/foundation/_variables';
+  @import '../../../../css/foundation/_mixin-utils';
   svg {
     position: fixed;
     z-index: 1000;

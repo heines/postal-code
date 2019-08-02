@@ -3,24 +3,25 @@
     .p-app__countents
       .p-app__page1#top
         h1 郵便番号API
-        p 郵便番号を入力してください
-        input(:value="code1" @change="code1 = $event.target.value" maxlength="3" placeholder="105")
-        span -
-        input(:value="code2" @change="code2 = $event.target.value" maxlength="4" placeholder="0011")
+        p
+          |郵便番号から住所を検索します。
+          br
+          |ハイフン無し半角数字で入力してください
+        input(:value="code" @change="code = $event.target.value" maxlength="7" placeholder="1050011")
         base-button(
           href="#answer"
-          :setPostalCode="setPostalCode"
-          :goToNext="goToNext"
+          :clickEvent="[goToNext, setPostalCode]"
           text="UPDATE"
           ).js-anchor-link
         p 使用API：
           a(href="http://zipcloud.ibsnet.co.jp/") 郵便番号データ配信サービス
       .p-app__page2#answer(:class="{ 'next' : isNext }")
-        p.p-app__comment(v-show="address || errorText")
-          |{{ address }} {{ errorText }}
+        p.p-app__comment(v-show="ansText")
+          |{{ ansText }}
         a(
           href="#top"
           @click="goToTop"
+          v-show="ansText"
           ) 戻る
     ImageShobon(
       ref="shobon"
@@ -30,17 +31,15 @@
 
 <script>
 import axios from 'axios';
-import BaseButton from './components/BaseButton.vue';
-import ImageShobon from './components/ImageShobon.vue';
+import BaseButton from './components/atom/BaseButton.vue';
+import ImageShobon from './components/atom/ImageShobon.vue';
 const scrollAnchorLink = require('./common/scrollAnchorLink.js').default;
 export default {
   name: 'App',
   data: function() {
     return {
-      code1: '',
-      code2: '',
-      address: '',
-      errorText: '',
+      code: '',
+      ansText: '',
       isNext: false,
     };
   },
@@ -55,20 +54,28 @@ export default {
   methods: {
     setPostalCode: function() {
       let tmp;
-      let postalCode =
+      let isInput = false;
+      let preText = '';
+      if(this.code) {
+        isInput = true;
+      } else {
+        this.code = '1050011';
+      }
       axios.get('https://heiness.net/api/', {
         params: {
-          code: this.code1 + this.code2
+          code: this.code
         }
       })
       .then(response => {
+        if(isInput) {
+          preText = 'なにか入れて欲しいんですけど、';
+        }
         tmp = response.data.results;
-        this.address = tmp[0]["address1"] + tmp[0]["address2"] + tmp[0]["address3"];
-        this.errorText = '';
+        this.ansText = preText + tmp[0]["address1"] + tmp[0]["address2"] + tmp[0]["address3"] + ' です';
       })
       .catch(error => {
-        this.address = '';
-        this.errorText = 'その郵便番号ないっス';
+        this.ansText = 'その郵便番号ないっス';
+
       })
     },
     goToNext: function() {
@@ -90,6 +97,9 @@ export default {
     padding-right: 5vw;
     padding-left: 5vw;
     box-sizing: border-box;
+    input {
+      @include fontSize(20);
+    }
     h1 {
       margin-top: 0;
       margin-bottom: 0;

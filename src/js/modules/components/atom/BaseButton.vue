@@ -1,7 +1,7 @@
 <template lang="pug">
   a.p-base-button
     .p-base-button__inner.blue(
-      @click="setPostalCode();goToNext()"
+      @click="clickEvent"
       v-html="text"
       )
 </template>
@@ -10,15 +10,14 @@
 export default {
   name: 'BaseButton',
   props: [
-    'setPostalCode',
     'text',
-    'goToNext',
+    'clickEvent',
   ]
 }
 </script>
 
 <style lang="scss" scoped>
-  @import '../../../css/foundation/_variables';
+  @import '../../../../css/foundation/_variables';
   .p-base-button {
     display: block;
     margin-top: 15px;

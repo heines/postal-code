@@ -30,7 +30,6 @@ export default function() {
         if ((rect.top < offsetUp) && (offsetUp || offsetSpUp) ) {
           top = rect.top - offsetUp;
         } else {
-          console.log(window);
           top = rect.top - offset;
         }
         pageScroll(y, y + top);
