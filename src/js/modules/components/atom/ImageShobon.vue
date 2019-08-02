@@ -4,7 +4,7 @@
     viewBox='0 0 800 480'
     :class="{ 'fall' : isAnimate }"
   )
-    title shobon
+    title しょぼーん
     g#layer(data-name='layer')
       g#shobon
         g#outline(
@@ -112,7 +112,7 @@ export default {
     z-index: 1000;
     @include l-more-than-mobile {
       right: 0;
-      bottom: 15%;
+      bottom: 5%;
       max-width: 80%;
     }
     @include l-mobile {
@@ -129,13 +129,13 @@ export default {
   }
   @keyframes floatMascot {
     0% {
-      bottom: 15%;
+      bottom: 5%;
     }
     30% {
-      bottom: 25%;
+      bottom: 10%;
     }
     100% {
-      bottom: 15%;
+      bottom: 5%;
     }
   }
 </style>
