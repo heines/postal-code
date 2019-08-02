@@ -67,7 +67,7 @@ export default {
         }
       })
       .then(response => {
-        if(isInput) {
+        if(!isInput) {
           preText = 'なにか入れて欲しいんですけど、';
         }
         tmp = response.data.results;
