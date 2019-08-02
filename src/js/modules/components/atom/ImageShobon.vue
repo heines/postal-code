@@ -116,7 +116,7 @@ export default {
       max-width: 80%;
     }
     @include l-mobile {
-      bottom: 10%;
+      bottom: 5%;
       width: 90vw;
     }
     // interaction
