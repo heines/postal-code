@@ -16,8 +16,10 @@
         p 使用API：
           a(href="http://zipcloud.ibsnet.co.jp/") 郵便番号データ配信サービス
       .p-app__page2#answer(:class="{ 'next' : isNext }")
-        p.p-app__comment(v-show="ansText")
-          |{{ ansText }}
+        p.p-app__comment(
+          v-show="ansText"
+          v-html="ansText"
+        )
         a(
           href="#top"
           @click="goToTop"
@@ -71,10 +73,10 @@ export default {
           preText = 'なにか入れて欲しいんですけど、';
         }
         tmp = response.data.results;
-        this.ansText = preText + tmp[0]["address1"] + tmp[0]["address2"] + tmp[0]["address3"] + ' です';
+        this.ansText = preText + tmp[0]["address1"] + tmp[0]["address2"] + tmp[0]["address3"] + ' ですね';
       })
       .catch(error => {
-        this.ansText = 'その郵便番号ないっス';
+        this.ansText = '（そこになければ）<br>ないですね';
 
       })
     },
@@ -123,6 +125,9 @@ export default {
       border: 5px solid $color-key;
       font-family: 'Kosugi Maru', sans-serif;
       @include fontSize(36);
+      @include l-more-than-mobile {
+        width: 370px;
+      }
       @include l-mobile {
         @include fontSizeMobile(27);
       }
