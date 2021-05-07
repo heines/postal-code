@@ -65,7 +65,7 @@
     "js-util": "git://github.com/ykob/js-util.git",
     "jstransformer-markdown-it": "^2.1.0",
     "sass-loader": "^7.1.0",
-    "ua-parser-js": "^0.7.19",
+    "ua-parser-js": "^0.7.24",
     "vue": "^2.6.10"
   }
 }
