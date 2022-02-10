@@ -44,7 +44,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^7.0.0",
     "merge-stream": "^1.0.1",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "pug": "^2.0.3",
     "pug-plain-loader": "^1.0.0",
     "pump": "^3.0.0",
